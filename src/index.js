@@ -1,24 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-// Type your code here
-    const newTaskForm = document.getElementById("create-task-form");
-   const newTaskDescription = document.getElementById("new-task-description");
-  const newTaskPriority = document.getElementById("new-task-priority");
-
-
-
-  newTaskForm.addEventListener("submit", createNewTask);
+  // your code here
+  document.querySelector("form").addEventListener("submit", (m) => {
+    m.preventDefault();
+    const newTask = document.getElementById("new-task-description").value;
+    console.log(newTask);
+    builtdtask(newTask);
+  });
 });
-
-const createNewTask = (event) => {
-  event.preventDefault();
-  const newTaskDescription = document.getElementById("new-task-description");
-  const newTask = document.createElement("li");
-  newTask.innerText = newTaskDescription.value;
-
-  appendNewTask(newTask);
-  event.target.reset();
-};
-
-const appendNewTask = (task) => {
-  document.getElementById("tasks").appendChild(task);
-};
+function builtdtask(task) {
+  const li = document.createElement("li");
+  li.textContent = task;
+  const button = document.createElement("button");
+  button.addEventListener("click", handledelete);
+  button.textContent = "X";
+  li.appendChild(button);
+  const theList = document.querySelector("#tasks");
+  theList.appendChild(li);
+}
+function handledelete(m) {
+  m.target.parentNode.remove();
+}
