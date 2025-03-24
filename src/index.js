@@ -16,7 +16,7 @@ function builtdtask(task) {
   li.appendChild(button);
   const theList = document.querySelector("#tasks");
   theList.appendChild(li);
-}
+};
 function handledelete(m) {
   m.target.parentNode.remove();
 }
